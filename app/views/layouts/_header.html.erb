@@ -10,6 +10,11 @@
         <% if user_signed_in? %>
           <li><%= form_with url: search_index_path, method: :get, local: true do |form| %>
                 <%= form.text_field :search %>
+
+                <%= select_tag 'range' ,options_for_select([['---選択してください---', ''], ['User', '1'], ['Book', '2']]) %>
+
+   　　<%= select_tag 'search', options_for_select([["前方一致","forward_match"], ["後方一致","backward_match"], ["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+
                 <%= form.submit 'Search', name: nil %>
               <% end %>
           </li>
